@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Guess the Picture</title>
+    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io(); // Ensure socket.io is loaded before this call
+
+            document.getElementById('usernameForm').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.getElementById('usernameInput').value;
+                socket.emit('setUsername', username);
+                localStorage.setItem('username', username);
+                window.location.href = 'game.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="usernameForm">
+        <h1>Enter your username</h1>
+        <form>
+            <input type="text" id="usernameInput" placeholder="Username" required>
+            <button type="submit">Join</button>
+        </form>
+    </div>
+</body>
+</html>

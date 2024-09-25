@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Picture</title>
+    <script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="game.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        #game {
+            display: flex;
+            width: 80%;
+            margin-top: 20px;
+        }
+        #imageContainer {
+            flex: 2;
+            text-align: center;
+        }
+        #imageContainer img {
+            max-width: 100%;
+            height: auto;
+        }
+        #sidebar {
+            flex: 1;
+            margin-left: 20px;
+            border: 1px solid #000;
+            padding: 10px;
+            height: 400px;
+            overflow-y: scroll;
+        }
+        #userList, #chat {
+            margin-bottom: 20px;
+        }
+        #chat {
+            border-top: 1px solid #000;
+            padding-top: 10px;
+        }
+        #messages {
+            height: 200px;
+            overflow-y: scroll;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io('http://localhost:3000');
+
+            // Récupérer le pseudo de l'utilisateur
+            const username = localStorage.getItem('username');
+            if (!username) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Envoi du pseudo au serveur
+            socket.emit('setUsername', username);
+
+            // Mise à jour de la liste des utilisateurs
+            socket.on('updateUserList', (users) => {
+                const userList = document.getElementById('userList').querySelector('ul');
+                userList.innerHTML = ''; // Vider la liste
+                users.forEach(user => {
+                    const li = document.createElement('li');
+                    li.innerText = user;
+                    userList.appendChild(li);
+                });
+            });
+
+            // Réception d'un nouveau message et ajout dans le chat
+            socket.on('newMessage', (data) => {
+                const chat = document.getElementById('messages');
+                const message = document.createElement('p');
+                message.innerHTML = `<strong>${data.user}:</strong> ${data.message}`;  // Affiche le pseudo et le message
+                chat.appendChild(message);
+                chat.scrollTop = chat.scrollHeight;  // Scroll automatiquement vers le bas
+            });
+
+            // Envoi d'un message via le formulaire de chat
+            document.getElementById('chatForm').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const message = document.getElementById('chatInput').value;
+                if (message.trim() !== "") {  // Eviter d'envoyer des messages vides
+                    socket.emit('sendMessage', message);
+                    document.getElementById('chatInput').value = ''; // Vider le champ après envoi
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="game">
+        <div id="imageContainer">
+            <h1>Guess the Picture</h1>
+            <img id="image" src="" alt="Guess the picture">
+            <form id="guessForm">
+                <input type="text" id="guessInput" placeholder="Enter your guess" required>
+                <button type="submit">Submit</button>
+            </form>
+            <p id="result"></p>
+        </div>
+        <div id="sidebar">
+            <div id="userList">
+                <h2>Users</h2>
+                <ul></ul>
+            </div>
+            <div id="chat">
+                <h2>Chat</h2>
+                <div id="messages"></div>
+                <form id="chatForm">
+                    <input type="text" id="chatInput" placeholder="Type a message" required>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
