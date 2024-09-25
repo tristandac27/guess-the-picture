@@ -1,0 +1,142 @@
+{
+    "items": [
+        {
+            "type": "quote",
+            "text": "“I’m Commander Shepard, and this is my favorite store on the Citadel!”",
+            "answers": [
+                "Mass Effect 2",
+                "Mass Effect"
+            ]
+        },
+        {
+            "type": "character",
+            "image": "./uploads/price.webp",
+            "answers": [
+                "Price"
+            ]
+        },
+        {
+            "type": "quote",
+            "text": "“What is a man? A Miserable little pile of secrets!”",
+            "answers": [
+                "Castlevania: Symphony of the Night",
+                "Castlevania"
+            ]
+        },
+        {
+            "type": "character",
+            "image": "./uploads/zinogre.webp",
+            "answers": [
+                "Zinogre"
+            ]
+        },
+        {
+            "type": "quote",
+            "text": "“I used to be an adventurer like you, then I took an arrow in the knee.”",
+            "answers": [
+                "The Elder Scrolls V: Skyrim",
+                "Skyrim"
+            ]
+        },
+        {
+            "type": "character",
+            "image": "./uploads/kratos.webp",
+            "answers": [
+                "Kratos"
+            ]
+        },
+        {
+            "type": "quote",
+            "text": "“It’s dangerous to go alone! Take this.”",
+            "answers": [
+                "The Legend of Zelda",
+                "Zelda"
+            ]
+        },
+        {
+            "type": "character",
+            "image": "./uploads/ezio.webp",
+            "answers": [
+                "Ezio"
+            ]
+        },
+        {
+            "type": "quote",
+            "text": "“Do a barrel roll!”",
+            "answers": [
+                "Star Fox 64",
+                "Star Fox"
+            ]
+        },
+        {
+            "type": "character",
+            "image": "./uploads/leon.webp",
+            "answers": [
+                "Leon"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/btd6.webp",
+            "answers": [
+                "BloonTD6",
+                "BTD6",
+                "Bloons Tower Defense 6"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/terraria.jpg",
+            "answers": [
+                "Terraria"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/valorant.jpg",
+            "answers": [
+                "Valorant",
+                "Valo"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/fortnite.jpg",
+            "answers": [
+                "Fortnite"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/overwatch.jpg",
+            "answers": [
+                "Overwatch",
+                "OW"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/league.webp",
+            "answers": [
+                "League of Legends",
+                "LoL"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/minecraft.jpeg",
+            "answers": [
+                "Minecraft",
+                "MC"
+            ]
+        },
+        {
+            "type": "game",
+            "image": "./uploads/mhw.webp",
+            "answers": [
+                "Monster Hunter World",
+                "MHW"
+            ]
+        }
+    ]
+}
